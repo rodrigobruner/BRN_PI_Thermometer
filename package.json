@@ -1,0 +1,28 @@
+{
+  "name": "brn_pi_thermometer",
+  "version": "1.0.0",
+  "description": "A simple temperature and humidity meter with DHT11 sensor for Raspberry PI3",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rodrigobruner/BRN_PI_Thermometer.git"
+  },
+  "keywords": [
+    "Temperature",
+    "Humidity",
+    "Raspberry",
+    "DHT11"
+  ],
+  "author": "Rodrigo Bruner",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/rodrigobruner/BRN_PI_Thermometer/issues"
+  },
+  "homepage": "https://github.com/rodrigobruner/BRN_PI_Thermometer#readme",
+  "dependencies": {
+    "node-dht-sensor": "^0.4.3"
+  }
+}
