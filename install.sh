@@ -5,6 +5,8 @@ if [ `whoami` != root ]; then
     exit
 fi
 
+mkdir ./data
+
 # Install Node.JS and NPM
 apt-get install nodejs npm
 

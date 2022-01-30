@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>BRN PI Thermometer</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+    <script
+      type="text/javascript"
+      src="https://www.gstatic.com/charts/loader.js"
+    ></script>
+  </head>
+  <body>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="#">upgrade your browser</a> to improve your experience.
+      </p>
+    <![endif]-->
+    <h1>Temperature and humidity</h1>
+    <div id="chart_div" style="width: 400px; height: 120px"></div>
+    <script>
+      let ws = "http://192.168.100.20:3000";
+
+      fetch(ws)
+        .then((response) => response.json())
+        .then((json) => {
+          console.log(json);
+          let TemperatureRedTo = json.maxTemperature;
+          let TemperatureYellowFrom = (json.maxTemperature / 100) * 75;
+          let TemperatureYellowTo = (json.maxTemperature / 100) * 90;
+
+          let temperature = json.data[json.data.length - 1].temperature;
+
+          let HumidityRedTo = json.maxHumidity;
+          let HumidityYellowFrom = (json.maxHumidity / 100) * 75;
+          let HumidityYellowTo = (json.maxHumidity / 100) * 90;
+
+          let humidity = json.data[json.data.length - 1].humidity;
+
+          google.charts.load("current", { packages: ["gauge"] });
+          google.charts.setOnLoadCallback(drawChart);
+
+          function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+              ["Label", "Value"],
+              ["Temperature", 0],
+              ["Humidity", 0],
+            ]);
+
+            var optionsTemperature = {
+              width: 600,
+              height: 600,
+              redFrom: TemperatureYellowTo,
+              redTo: 100,
+              yellowFrom: TemperatureYellowFrom,
+              yellowTo: TemperatureYellowTo,
+              minorTicks: 5,
+            };
+
+            var optionsHumidity = {
+              width: 600,
+              height: 600,
+              redFrom: HumidityYellowTo,
+              redTo: 100,
+              yellowFrom: HumidityYellowFrom,
+              yellowTo: HumidityYellowTo,
+              minorTicks: 5,
+            };
+
+            var chart = new google.visualization.Gauge(
+              document.getElementById("chart_div")
+            );
+
+            chart.draw(data, optionsTemperature);
+            chart.draw(data, optionsHumidity);
+
+            setInterval(function () {
+              data.setValue(0, 1, temperature);
+              chart.draw(data, optionsTemperature);
+            }, 1000);
+
+            setInterval(function () {
+              data.setValue(1, 1, humidity);
+              chart.draw(data, optionsHumidity);
+            }, 1000);
+          }
+        });
+    </script>
+  </body>
+</html>
