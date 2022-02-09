@@ -5,6 +5,8 @@ let sensorLib = require("node-dht-sensor");
 var date = new Date();
 
 let app = {
+  timeout: "300000",
+
   obj: {
     maxTemperature: 30,
     maxHumidity: 60,
