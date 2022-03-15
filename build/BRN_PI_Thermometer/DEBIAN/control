@@ -1,0 +1,11 @@
+Package: brn-pi-thermometer
+Version: 0.1
+Maintainer: BRUNER
+Original-Maintainer: Rodrigo Bruner<rodrigo@bruner.eti.br>
+Priority: optional
+Installed-size: 10
+Homepage: https://github.com/rodrigobruner/BRN_PI_Thermometer
+Architecture: all
+Description: A simple temperature and humidity meter with DHT11 sensor for Raspberry PI3
+Depends: nodejs, npm
+license: GPL-3.0 License

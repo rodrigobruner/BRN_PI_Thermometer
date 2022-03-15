@@ -1,0 +1,10 @@
+ [Unit]
+ Description=Thermometer
+ After=multi-user.target
+
+ [Service]
+ Type=idle
+ ExecStart=/bin/bash /opt/BRN_PI_Thermometer/start.sh
+
+ [Install]
+ WantedBy=multi-user.target

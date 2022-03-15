@@ -1,0 +1,4 @@
+#bin/bash
+chmod 644 /lib/systemd/system/BRNThermometer.service
+systemctl daemon-reload
+systemctl enable BRNThermometer.service
