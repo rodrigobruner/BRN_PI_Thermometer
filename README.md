@@ -13,17 +13,28 @@ foo@bar:~$ cd ./BRN_PI_Thermometer-main
 foo@bar:~$ sudo sh ./build.sh
 ```
 
+## Install
+
+After the build process you can run the command below on Raspberry PI
+
+```console
+foo@bar:~$ sudo dpkg -i ./build/BRN_PI_Thermometer.deb
+```
+
 ## Information web service for dashboard
 
 To manually start the service, on raspberry run the command below:
 
 ```console
-foo@bar:~$ node BRN_PI_Thermometer/src/service.js
+foo@bar:~$ sudo node BRN_PI_Thermometer/service.js
 ```
+## Dashboard
 
-## Dashboard with temperature and humidity
+To manually start the client, on raspberry run the command below:
 
-client.html
+```console
+foo@bar:~$ sudo http-server -p 80
+```
 
 
 ![Dashboard](doc/BRN_PI_Thermometer.png)
