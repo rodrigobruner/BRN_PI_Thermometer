@@ -26,14 +26,14 @@ foo@bar:~$ sudo dpkg -i ./build/BRN_PI_Thermometer.deb
 To manually start the service, on raspberry run the command below:
 
 ```console
-foo@bar:~$ sudo node BRN_PI_Thermometer/service.js
+foo@bar:~$ sudo node /opt/BRN_PI_Thermometer/service.js
 ```
 ## Dashboard
 
 To manually start the client, on raspberry run the command below:
 
 ```console
-foo@bar:~$ sudo http-server -p 80
+foo@bar:~$ sudo http-server -p 80 
 ```
 
 
