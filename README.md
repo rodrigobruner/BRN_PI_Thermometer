@@ -20,6 +20,11 @@ After the build process you can run the command below on Raspberry PI
 ```console
 foo@bar:~$ sudo dpkg -i ./build/BRN_PI_Thermometer.deb
 ```
+Maybe do you need restart the Raspberry Pi to automatic start the application for this use the command bellow
+
+```console
+foo@bar:~$ sudo reboot
+```
 
 ## Information web service for dashboard
 
