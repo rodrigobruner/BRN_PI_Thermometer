@@ -1,15 +1,16 @@
+require('dotenv').config();
+const sqlite3 = require('sqlite3').verbose();
+
 let fs = require("fs");
 let http = require("http");
 let sensorLib = require("node-dht-sensor");
 
-var date = new Date();
-
 let app = {
-  timeout: "300000",
+  timeout: +process.env.TIMEOUT,
 
   obj: {
-    maxTemperature: 30,
-    maxHumidity: 60,
+    maxTemperature: +process.env.MAX_TEMPERATURE || 30,
+    maxHumidity: +process.env.MAX_HUMIDITY || 60,
     data: new Array(),
   },
   sensor: {
@@ -18,6 +19,7 @@ let app = {
   },
 
   read: function () {
+    let date = new Date();
     let readout = sensorLib.read(this.sensor.type, this.sensor.pin);
     readout.datetime = date.toISOString();
     this.obj.data.push(readout);
@@ -57,10 +59,9 @@ let app = {
       res.end(JSON.stringify(this.obj));
     });
 
-    // Start the server on port 3000
-    app.listen(3000, "0.0.0.0");
-    console.log("Node server running on http://localhost:3000");
+
+    app.listen(+process.env.APP_PORT || 3000, "0.0.0.0");
+
   },
 };
-
 app.start();

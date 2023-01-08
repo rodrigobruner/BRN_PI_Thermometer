@@ -1,0 +1,9 @@
+{
+  "apps": [
+    {
+      "name": "brn-pi-thermometer-server",
+      "script": "src/service.js",
+      "time": true
+    }
+  ]
+}

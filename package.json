@@ -23,6 +23,8 @@
   },
   "homepage": "https://github.com/rodrigobruner/BRN_PI_Thermometer#readme",
   "dependencies": {
-    "node-dht-sensor": "^0.4.3"
+    "dotenv": "^16.0.3",
+    "node-dht-sensor": "^0.4.3",
+    "sqlite3": "^5.1.4"
   }
 }
